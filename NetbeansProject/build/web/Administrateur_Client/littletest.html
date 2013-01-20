@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Bootstrap 101 Template</title>
+     <!--Bootstrap -->
+      <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+      <h1>Notes</h1>
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="js/bootstrap.min"></script>
+	  <script src="js/bogusapp.js"></script>
+	  
+	  <select name="Notes" id="listofnotes" onchange="updateCurrentIndexAndShow()">
+		</select>
+		</br>
+	  <button type="button" onclick="creer()">Creer nouvelle note</button></br>	
+	  <button type="button" onclick="effacer()">Effacer note</button>
+	  </br>Nom de la Note: </br> <input type="text"  rows="1" name="" id="nametextfield" onchange="updateNoteData()" onkeypress="updateNoteData()" ></input></br>
+	  Contenu de la Note: </br> <textarea rows="10" cols="30"id="bodytextarea" onchange="updateNoteData()" onkeypress="updateNoteData()">
+</textarea></br>
+	  
+    </body>
+   </html>
