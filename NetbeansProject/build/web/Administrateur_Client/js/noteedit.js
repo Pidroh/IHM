@@ -1,3 +1,4 @@
+		alert("CODE LOADED");
 	var marker;
 	function testGeoloc() {
 	
@@ -58,7 +59,6 @@
 	paths.add({ name : "Le parcour" });
 	noteView.render();
 	*/
-		alert("CODE LOADED");
 function addNoteToPath()
 {
 	var name = document.getElementById("notenameinput").value;

@@ -1,4 +1,5 @@
 	var marker;
+	alert("code loaded");
 	function testGeoloc() {
 	
 		var div = document.getElementById("demoGeoloc");
