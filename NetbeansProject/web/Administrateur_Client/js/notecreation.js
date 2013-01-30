@@ -1,47 +1,6 @@
 	var marker;
 	alert("code loaded");
-	function testGeoloc() {
-	
-		var div = document.getElementById("demoGeoloc");
-		if (!navigator.geolocation) {
-			div.innerHTML = 'Erreur : votre navigateur ne supporte pas Geolocation';
-			return;
-		}			
-		div.style.height = '500px';
-		div.style.width = '570px';
-		var options = {
-			zoom: 13,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(div, options);
-		marker = new google.maps.Marker();
-		marker.setMap(map);
-		marker.setDraggable(true);
-		google.maps.event.addListener(map, 'click', function(event) {
-			marker.setPosition(event.latLng);
-			marker.setCenter(event.latLng);
-		});
-		
-		navigator.geolocation.getCurrentPosition(
-			// Succ�s
-			function (position) {
-			
-				var lat = position.coords.latitude;
-				var lng = position.coords.longitude;
-				map.setCenter(new google.maps.LatLng(lat, lng));
-				marker.setPosition(new google.maps.LatLng(lat, lng));
-			},
-			// Erreur
-			function (error) {
-				div.innerHTML = 'Erreur : ' + error.message;
-			},
-			// Configuration
-			{
-				maximumAge: 60000,
-				timeout: 2000
-			}
-		);
-	}
+
 	
 	var selectOfPath = $('select.notes')[0];
 	
@@ -74,8 +33,7 @@ function addNoteToPath()
 	//alert(n.getLat());
 	p.get("notes").add(n);
         saveCollectionToLocal("mypaths", paths);
-        paths = loadPaths("mypaths");
-        
+        //paths = loadPaths("mypaths");
         window.location.href="parcour.html";
 	//alert("Adding "+n.get("name")+ "  to path "+p.get("name") + " at latitude "+a+" at longitude " +b);
 }

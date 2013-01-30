@@ -4,7 +4,7 @@
 	
 		var div = document.getElementById("demoGeoloc");
 		if (!navigator.geolocation) {
-			div.innerHTML = 'Erreur : votre navigateur ne supporte pas l\'API de Géolocalisation HTML 5';
+			div.innerHTML = 'Erreur : votre navigateur ne supporte pas Geolocalisation';
 			return;
 		}			
 		div.style.height = '500px';
@@ -23,7 +23,7 @@
 		});
 		
 		navigator.geolocation.getCurrentPosition(
-			// Succès
+			// Succï¿½s
 			function (position) {
 			
 				var lat = position.coords.latitude;
@@ -42,24 +42,12 @@
 			}
 		);
 	}
-	
-	/*var selectOfPath = $('select.notes')[0];
-	
-	var paths = new collecPaths([
-	  {"name" : "Le grand parcour"},
-	  {"name" : "La bla"},
-	  {"name" : "Le parcours d'arc"}
-	]);
-	var noteView = new CollecToSelect({
-		el : selectOfPath,
-		collection : paths
-	});
-	
-	noteView.render();
-	paths.add({ name : "Le parcour" });
-	noteView.render();
-	*/
-function addNoteToPath()
+	var paths = loadPaths("mypaths");
+        var note = paths.at(localStorage["currentpath"]).get("notes").at(localStorage["currentnote"]);
+        if(!note) window.location.href="parcour.html";
+        document.getElementById("notenameinput").value = note.get("name");
+        document.getElementById("notebodyinput").value = note.get("body");
+function registerChanges()
 {
 	var name = document.getElementById("notenameinput").value;
 	var body = document.getElementById("notebodyinput").value;
@@ -67,11 +55,12 @@ function addNoteToPath()
 	var a = marker.getPosition().lat();
 	var b = marker.getPosition().lng();
 	
-	var n = window.noteForEdition;
-	if(n){
-		n.set({name: name, body: body, lat: a, lng: b});
-		alert("editing "+n.get("name")+ " at latitude "+a+" at longitude " +b);
+	
+	if(note){
+		note.set({name: name, body: body, lat: a, lng: b});
+                saveCollectionToLocal("mypaths", paths);
+                window.location.href="parcour.html";
 	}
-	alert("cant edit");
+
 	
 }

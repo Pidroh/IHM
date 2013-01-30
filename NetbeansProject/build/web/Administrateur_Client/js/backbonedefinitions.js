@@ -94,17 +94,11 @@ function saveCollectionToLocal(k, c){
 
 function loadPaths(key){
     if(!localStorage[key]) return new collecPaths();
-    alert("loaded JSON "+localStorage[key]);
+    //alert("loaded JSON "+localStorage[key]);
     var collec = new collecPaths(JSON.parse(localStorage[key]));
-    //alert(localStorage["mypaths"]);
-    //alert(JSON.stringify(collec));
+    
     for (var i=0; i< collec.length; i++) {
         collec.at(i).set("notes", new collecNotes(collec.at(i).get("notes")));
     }
-    /*    if(collec.at(i).get("notes")== "")
-            collec.at(i).set("notes", new collecNotes());
-        else
-            collec.at(i).set("notes", new collecNotes(JSON.parse(collec.at(i).get("notes")))); */
-//    }
     return collec;
 }
