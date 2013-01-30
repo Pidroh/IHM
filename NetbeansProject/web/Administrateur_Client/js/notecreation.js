@@ -4,7 +4,7 @@
 	
 		var div = document.getElementById("demoGeoloc");
 		if (!navigator.geolocation) {
-			div.innerHTML = 'Erreur : votre navigateur ne supporte pas l\'API de Géolocalisation HTML 5';
+			div.innerHTML = 'Erreur : votre navigateur ne supporte pas Geolocation';
 			return;
 		}			
 		div.style.height = '500px';
@@ -23,7 +23,7 @@
 		});
 		
 		navigator.geolocation.getCurrentPosition(
-			// Succès
+			// Succï¿½s
 			function (position) {
 			
 				var lat = position.coords.latitude;
@@ -45,19 +45,16 @@
 	
 	var selectOfPath = $('select.notes')[0];
 	
-	var paths = new collecPaths([
-	  {"name" : "Le grand parcour"},
-	  {"name" : "La bla"},
-	  {"name" : "Le parcours d'arc"}
-	]);
+        paths = loadPaths("mypaths");
+	//var paths = new collecPaths();
+        
 	var noteView = new CollecToSelect({
 		el : selectOfPath,
 		collection : paths
 	});
-	
 	noteView.render();
-	paths.add({ name : "Le parcour" });
-	noteView.render();
+        
+        selectOfPath.selectedIndex = localStorage["currentpath"];
 		
 function addNoteToPath()
 {
@@ -76,5 +73,9 @@ function addNoteToPath()
 	});
 	//alert(n.getLat());
 	p.get("notes").add(n);
-	alert("Adding "+n.get("name")+ "  to path "+p.get("name") + " at latitude "+a+" at longitude " +b);
+        saveCollectionToLocal("mypaths", paths);
+        paths = loadPaths("mypaths");
+        
+        window.location.href="parcour.html";
+	//alert("Adding "+n.get("name")+ "  to path "+p.get("name") + " at latitude "+a+" at longitude " +b);
 }
