@@ -1,30 +1,11 @@
-	var marker;
+	//var marker;
 	alert("code loaded");
         
-	function testGeoloc() {
 	
-            var div = document.getElementById("demoGeoloc");
-            if (!navigator.geolocation) {
-                    div.innerHTML = 'Erreur : votre navigateur ne supporte pas l\'API de G�olocalisation HTML 5';
-                    return;
-            }		
-            div.style.height = '500px';
-		div.style.width = '570px';
-            var options = {
-			zoom: 13,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-            
-            map = new google.maps.Map(div, options);
-            if(paths.length > 0){
-                selectOfPath.selectedIndex = 0;
-                getPathFromSelect();
-            }
-	}
 	
 	var selectOfPath = $('select.paths')[0];
 	
-        var markers = [];
+        
         
 	var paths;
         paths = loadPaths("mypaths");
@@ -61,32 +42,8 @@ function getPathFromSelect(){
         noteView.collection = model.get("notes");
         noteView.render();
         var notesCol =  model.get("notes");
-        var bounds = new google.maps.LatLngBounds ();
-        for (var i=0; i< markers.length; i++) {
-            markers[i].setMap(null);
-           
-        }
-        markers.length = 0;
-        /*for (var i=0; i< infos.length; i++) {
-            infos[i].close();
-        }*/
-        for (var i=0; i< notesCol.length; i++) {
-            //if(infos.length <= i) infos[infos.length] = new google.maps.InfoWindow();
-            
-            var n = notesCol.at(i);
-            marker = new google.maps.Marker();
-            marker.setMap(map);
-            //alert(n.get("lng"));
-            //alert(n.get("lat"));
-            var p = new google.maps.LatLng(n.get("lat"), n.get("lng"));
-            marker.setPosition(p);
-            if(!bounds.contains(p))
-                bounds.extend(p);
-            markers[markers.length] = marker;
-            marker.setTitle(n.get("name"));
-        }
-        map.fitBounds(bounds);
-        map.setZoom(map.getZoom()-1);
+        showNotesOnMap(notesCol);
+        calculateDistanceAndTime();
     } else{
         alert("parcours n'est pas valide");
     }
@@ -103,7 +60,6 @@ function newPath(){
     var indexOf = paths.indexOf(p);
     selectOfPath.selectedIndex = indexOf;
     getPathFromSelect();
-//alert(JSON.stringify(paths));
 }
 function updatePath(){
     currentPath.set("name", $('#parcournameinput')[0].value);
@@ -180,6 +136,43 @@ function sendToServer(){
             alert( "Request failed: " + textStatus );
         });
 }
+function calculateDistanceAndTime(){
+    var model = currentPath;
+    var outputDiv = document.getElementById('distancetime');
+    if(model){
+        var notesCol = model.get("notes");
+        alert(notesCol.length);
+        if(notesCol.length > 1)
+            getFullDistance(notesCol, distanceCallBack);
+        else
+            outputDiv.innerHTML = '';
+  //          alert("Notes no good");
+        
+    } else{
+        outputDiv.innerHTML = '';
+//        alert("NO PATH");
+        
+    }
+}
+    function distanceCallBack(response, status) {
+        if (status != google.maps.DistanceMatrixStatus.OK) {
+          alert('Error was: ' + status);
+        } else {
+          var origins = response.originAddresses;
+          var destinations = response.destinationAddresses;
+          var outputDiv = document.getElementById('distancetime');
+          
+          var totalD = 0;
+          var totalT = 0;
+
+          for (var i = 0; i < origins.length-1; i++) {
+            var results = response.rows[i].elements;
+            totalD += results[i+1].distance.value;
+            totalT += results[i+1].duration.value;
+          }
+          outputDiv.innerHTML = "Distance totale " + totalD + " meters. Duration totale " + (totalT/60).toFixed(2)+" minutes.";          
+        }
+    }
 $('select.paths').on("change", getPathFromSelect);
 $('#parcournameinput').on("change", updatePath);
 $('#parcourbodyinput').on("change", updatePath);

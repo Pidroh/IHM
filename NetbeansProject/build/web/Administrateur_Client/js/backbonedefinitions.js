@@ -86,19 +86,43 @@
 	});
 
 function saveCollectionToLocal(k, c){
-//	alert(JSON.stringify(c));
 	localStorage[k] = JSON.stringify(c);
-  //      alert("json sent "+JSON.stringify(c));
-    //    alert("saved at local "+localStorage[k]);
 }
 
-function loadPaths(key){
-    if(!localStorage[key]) return new collecPaths();
-    //alert("loaded JSON "+localStorage[key]);
-    var collec = new collecPaths(JSON.parse(localStorage[key]));
+function getPathsFromJSONString(string){
+    var collec = new collecPaths(JSON.parse(string));
     
     for (var i=0; i< collec.length; i++) {
         collec.at(i).set("notes", new collecNotes(collec.at(i).get("notes")));
     }
     return collec;
+}
+
+function loadPaths(key){
+    if(!localStorage[key]) return new collecPaths();
+    //alert("loaded JSON "+localStorage[key]);
+    return getPathsFromJSONString(localStorage[key]);
+}
+
+
+function loadPathFromServeur(callback, localKey){
+
+    var result = $.ajax({
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
+            url: 'http://localhost:8080/NetbeansProject/webresources/aministratorSave', //'http://localhost:8080/WebServiceInvocation/webresources/generic/',//'webresources/generic',
+            type: 'GET',
+            mimeType: 'text/JSON',
+            success: function(data) { 
+                var c = getPathsFromJSONString(data);
+                saveCollectionToLocal(localKey, c);
+            },
+            done: callback
+        });
+        result.fail(function(jqXHR, textStatus) {
+            alert( "Request failed: " + textStatus );
+        });
+        
 }
