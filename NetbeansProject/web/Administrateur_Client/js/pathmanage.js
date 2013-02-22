@@ -3,7 +3,7 @@
         
 	
 	
-	var selectOfPath = $('select.paths')[0];
+	var selectOfPaTth = $('select.paths')[0];
 	
         
         

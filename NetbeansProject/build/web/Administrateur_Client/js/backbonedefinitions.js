@@ -60,6 +60,8 @@
 		
 	  }
 	});
+        
+        
 
 	var CollecToList = Backbone.View.extend({
 		
@@ -118,9 +120,11 @@ function loadPathFromServeur(callback, localKey){
             success: function(data) { 
                 var c = getPathsFromJSONString(data);
                 saveCollectionToLocal(localKey, c);
-            },
-            done: callback
-        });
+                alert(localKey);
+                //alert(data);
+            }
+            
+        }).done(callback);
         result.fail(function(jqXHR, textStatus) {
             alert( "Request failed: " + textStatus );
         });
