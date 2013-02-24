@@ -3,7 +3,7 @@
         
 	
 	
-	var selectOfPaTth = $('select.paths')[0];
+	var selectOfPath = $('select.paths')[0];
 	
         
         
@@ -170,7 +170,7 @@ function calculateDistanceAndTime(){
             totalD += results[i+1].distance.value;
             totalT += results[i+1].duration.value;
           }
-          outputDiv.innerHTML = "Distance totale " + totalD + " meters. Duration totale " + (totalT/60).toFixed(2)+" minutes.";          
+          outputDiv.innerHTML = "Distance totale " + totalD + " meters. Duration totale " + (totalT/60).toFixed(2)+" minutes.";
         }
     }
 $('select.paths').on("change", getPathFromSelect);

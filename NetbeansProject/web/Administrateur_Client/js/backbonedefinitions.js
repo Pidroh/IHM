@@ -128,5 +128,4 @@ function loadPathFromServeur(callback, localKey){
         result.fail(function(jqXHR, textStatus) {
             alert( "Request failed: " + textStatus );
         });
-        
 }

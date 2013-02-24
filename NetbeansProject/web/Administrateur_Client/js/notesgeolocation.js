@@ -55,7 +55,7 @@
 			},
 			// Erreur
 			function (error) {
-				div.innerHTML = 'Erreur : ' + error.message;
+				div.innerHTML = 'Erreur geoloc: ' + error.message;
 			},
 			// Configuration
 			{
