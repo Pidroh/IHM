@@ -49,7 +49,7 @@
                     string +="</div></div></div>";
                 }
                 
-                alert(string);
+               // alert(string);
                // alert(div.innerHTML);
                div.innerHTML = string;
 		
@@ -60,7 +60,7 @@ function pressPathButton(i){
     //alert(i);
     
     localStorage["client_selectedpath"] = i;
-    alert(localStorage["client_selectedpath"]);
+    //alert(localStorage["client_selectedpath"]);
     window.location.href="client_parcour_stat.html";
 }        
 function afterLoading (){
@@ -71,5 +71,3 @@ function afterLoading (){
 	});
         pathView.render();
 }
-        
-	

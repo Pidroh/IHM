@@ -8,6 +8,20 @@
         initialize: function(){
         }
     });
+    
+    var PathStats = Backbone.Model.extend({
+		defaults : {
+			name : "",
+			distance : 0,
+                        time : 0
+		},
+        initialize: function(){
+        }
+    });
+    
+    var CollecPathStats  = Backbone.Collection.extend({
+            model : PathStats
+    });
 
 	var collecNotes = Backbone.Collection.extend({
 		model : Note
@@ -89,6 +103,19 @@
 
 function saveCollectionToLocal(k, c){
 	localStorage[k] = JSON.stringify(c);
+}
+
+function loadPathStats(){
+    var key = "pathstars";
+    var s = localStorage[key];
+    if(s == null) return new CollecPathStats();
+    var collec = new CollecPathStats(JSON.parse(s)); 
+    return collec;
+}
+
+function savePathStats(collec){
+    var key = "pathstars";
+    localStorage[key] = JSON.stringify(collec);
 }
 
 function getPathsFromJSONString(string){
