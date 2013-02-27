@@ -119,6 +119,7 @@ function savePathStats(collec){
 }
 
 function getPathsFromJSONString(string){
+    if(!string || string == "notfound") return new collecPaths();
     var collec = new collecPaths(JSON.parse(string));
     
     for (var i=0; i< collec.length; i++) {
