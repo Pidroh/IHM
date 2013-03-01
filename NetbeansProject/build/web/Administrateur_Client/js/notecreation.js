@@ -1,5 +1,5 @@
 	var marker;
-	alert("code loaded");
+	//alert("code loaded");
 
 	
 	var selectOfPath = $('select.notes')[0];

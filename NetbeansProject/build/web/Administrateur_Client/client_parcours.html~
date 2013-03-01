@@ -1,0 +1,211 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Geonotes App's</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link  rel="stylesheet" type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+		<style type="text/css">
+        body {
+        padding-top: 60px;
+		background-color:#FFDEAD;
+        }
+        </style>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">
+        <script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/backbonedefinitions.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <!-- Body
+    ================================================== -->	
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="accueil.html">Geonotes App's</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active">
+                <a href="accueil.html">Accueil</a>
+              </li>
+              <li class="">
+                <a href="localisation.html">Localisation</a>
+              </li>
+              <li class="">
+                <a href="parcours.html">Parcours</a>
+              </li>
+              <li class="">
+                <a href="statistiques.html">Statistiques</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- container body
+    ================================================== --> 
+	<div class="container">
+		<div class="thumbnail text-center" >
+			<div class="accordion" id="accordion2">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+							Parcour numero #1 : nom du parcour 1
+						</a>
+					</div>
+					<div id="collapseOne" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<table class="table table-bordered">
+								<caption>Le parcour que vous allez suivre:</caption>
+								<thead>
+									<tr>
+										<th>Steps</th>
+										<th>Notes</th>
+										<th>Distance</th>
+										<th>Temps</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>debut parcour</td>
+										<td>carnot</td>
+										<td>0m</td>
+										<td>0min</td>
+									</tr>
+									<tr>
+										<td>Step1</td>
+										<td>jeanjaures</td>
+										<td>100m</td>
+										<td>2min</td>
+									</tr>
+									<tr>
+										<td>Step2</td>
+										<td>Hotel</td>
+										<td>130m</td>
+										<td>3min</td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn btn-large btn-block btn-inverse" href="api_parcour.html">Demarrer le parcour </a>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+							Parcour numero #2 : nom du parcours 2
+						</a>
+					</div>
+					<div id="collapseTwo" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<table class="table table-bordered">
+								<caption>Le parcour que vous allez suivre:</caption>
+								<thead>
+									<tr>
+										<th>Steps</th>
+										<th>Notes</th>
+										<th>Distance</th>
+										<th>Temps</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>debut parcour</td>
+										<td>carnot</td>
+										<td>0m</td>
+										<td>0min</td>
+									</tr>
+									<tr>
+										<td>Step1</td>
+										<td>jeanjaures</td>
+										<td>100m</td>
+										<td>2min</td>
+									</tr>
+									<tr>
+										<td>Step2</td>
+										<td>Hotel</td>
+										<td>130m</td>
+										<td>3min</td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn btn-large btn-block btn-inverse" href="api_parcour.html">Demarrer le parcour </a>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+							Parcour numero #3 : nom du parcours 3
+						</a>
+					</div>
+					<div id="collapseThree" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<table class="table table-bordered">
+								<caption>Le parcour que vous allez suivre:</caption>
+								<thead>
+									<tr>
+										<th>Steps</th>
+										<th>Notes</th>
+										<th>Distance</th>
+										<th>Temps</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>debut parcour</td>
+										<td>carnot</td>
+										<td>0m</td>
+										<td>0min</td>
+									</tr>
+									<tr>
+										<td>Step1</td>
+										<td>jeanjaures</td>
+										<td>100m</td>
+										<td>2min</td>
+									</tr>
+									<tr>
+										<td>Step2</td>
+										<td>Hotel</td>
+										<td>130m</td>
+										<td>3min</td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn btn-large btn-block btn-inverse" href="api_parcour.html">Demarrer le parcour </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+<!--footer 
+============================================================= -->
+	<div class="container">	
+		<div class="text-center">
+			<h6>2013 Telecom Saint-Etienne</h6> 
+		</div>
+        <div class="navbar navbar-inverse navbar-fixed-bottom">
+           <div class="navbar-inner">
+                <div class="container"> <!-- délimite la largeur de la page -->
+                    <a class="btn btn-block btn-navbar" href="accueil.html"> 
+                        <span class="icon-home icon-black" ></span>
+                    </a>  
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- fin du corps de la page -->
+    </body>
+
+</html>

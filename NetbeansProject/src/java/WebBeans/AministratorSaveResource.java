@@ -22,12 +22,14 @@ import persistence.administratordata;
  *
  * @author pedro
  */
-@Path("aministratorSave")
-@Stateless
+@Path("aministratorSave") //the path to arrive at this webservice
+@Stateless //this means this is a stateless EJB!
 public class AministratorSaveResource {
-
+    // name of the context of persistence
     @PersistenceContext(name="WebApplication1PU")
     EntityManager em;
+    //the entity manager will handle communication with
+    //the administration data
     
     @Context
     private UriInfo context;
@@ -42,15 +44,17 @@ public class AministratorSaveResource {
      * Retrieves representation of an instance of WebBeans.AministratorSaveResource
      * @return an instance of java.lang.String
      */
-    @GET
+    @GET //this method will be called during a GET
     @Produces("application/json")
     public String getJson() {
-        if(em == null) return "EM NULL";
+        if(em == null) return "EM NULL"; 
+        //checks if EntityManager was found
         administratordata ad = em.find(administratordata.class, new Long(3));
+        //tries to find a instance of administrator data in the data base
         if(ad == null){
-            return "notfound";
+            return "notfound"; //return not found if there is none
         } else{
-            return ad.getNotesJSON();
+            return ad.getNotesJSON(); //return the JSON information if there is.
         }
     }
 
@@ -62,17 +66,19 @@ public class AministratorSaveResource {
     @PUT
     @Consumes("application/json")
     public void putJson(String content) {
-        if(em == null) return;
+        if(em == null) return; // verifies if entity manager exists
         administratordata ad = em.find(administratordata.class, new Long(3));
+        //finds our administratordata in the JDBC and checks if it exists
         if(ad == null){
-            ad = new administratordata();
+            ad = new administratordata(); 
+            //creates instance if it doesn't already exist
             ad.setId(new Long(3));
             System.out.println("BEFORE PERSIST");
             em.persist(ad);
             System.out.println("CREATED ENTRY");
            // em.find(administratordata, new Long(3));
         }
-        ad.setNotesJSON(content);
-        em.merge(ad);
+        ad.setNotesJSON(content); //saves the JSON string
+        em.merge(ad); //commits the changes!!!
     }
 }

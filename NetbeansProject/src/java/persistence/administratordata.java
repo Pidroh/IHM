@@ -22,7 +22,7 @@ public class administratordata implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(length = 3000)
+    @Column(length = 3000) //so the string can be big
     private String notesJSON;
 
     public String getNotesJSON() {

@@ -1,7 +1,6 @@
 	//var marker;
-	alert("code loaded");
+	//alert("code loaded");
         
-	
 	
 	var selectOfPath = $('select.paths')[0];
 	
@@ -141,7 +140,6 @@ function calculateDistanceAndTime(){
     var outputDiv = document.getElementById('distancetime');
     if(model){
         var notesCol = model.get("notes");
-        alert(notesCol.length);
         if(notesCol.length > 1)
             getFullDistance(notesCol, distanceCallBack);
         else

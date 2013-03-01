@@ -1,4 +1,4 @@
-		alert("CODE LOADED");
+		//alert("CODE LOADED");
 	var marker;
 	function testGeoloc() {
 	
