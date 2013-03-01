@@ -1,4 +1,49 @@
 Pedro Gabriel Fonteles Furtado
 Younes Bettioui
 
-Video of the application: http://dl.dropbox.com/u/25774476/Info6%20Projet%20Application%20working.mp4
+Video of the application: 
+http://dl.dropbox.com/u/25774476/Info6%20Projet%20Application%20working.mp4
+HTML files and web structure folder:
+https://github.com/Pidroh/IHM/tree/master/NetbeansProject/web/Administrateur_Client
+Javascript sources folder:
+https://github.com/Pidroh/IHM/tree/master/NetbeansProject/web/Administrateur_Client/js
+
+How to run this application:
+You would have to clone the GIT, open the project in Netbeans and then deploy. The interface will not work very well
+if the webserver is not accessible. The code doesn't work offline since two libraries are loaded from the web,
+JQuery and GoogleMaps.
+
+HTML files explanation:
+
+parcour.html:
+This basically hosts the administrator`s abilites to create and manipulate paths. It allows for editing
+every property of a path, drawing the notes of a path in the map and also has functions to go to
+other pages where you can modify and create notes.
+
+Page to create a new note, allows to insert name, description and to pick a position from the map.
+
+Javascript files explanation:
+
+Javascript files for backbone and underscore. Jquery and the Google Maps API are loaded at execution time!
+Although the file backbone.localStorage.js is included, we do not use it, we use our own way to store things
+at localStorage.
+
+backbonedefinitions.js: 
+this file contains all the classes for: 
+Models (Path, Note and PathsStats),
+Collections (Collection of paths, notes and of pathstats),
+some reutilisable views (CollecToSelect which binds a collection to an HTML list),
+and some utility methods to load collections from the localStorage or from the server.
+
+PathManage.js:
+Logic behind parcour.html.
+
+Notesgeolocation.js, client_ps_googlemaps and pathsgooglemaps.js:
+This file will interface with the google maps API, create markers and stuff, as necessary.
+They will also call APIs to calculate distances and times, draw routes and get adresses.
+
+pathmanage.js:
+
+
+notecreation.js:
+Logic behind 
