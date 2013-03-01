@@ -7,6 +7,8 @@ HTML files and web structure folder:
 https://github.com/Pidroh/IHM/tree/master/NetbeansProject/web/Administrateur_Client
 Javascript sources folder:
 https://github.com/Pidroh/IHM/tree/master/NetbeansProject/web/Administrateur_Client/js
+Server side sources folder:
+https://github.com/Pidroh/IHM/tree/master/NetbeansProject/src/java
 
 How to run this application:
 You would have to clone the GIT, open the project in Netbeans and then deploy. The interface will not work very well
